@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx/unique_controllers.dart';
+import 'package:flutter_getx/controller/unique_controllers.dart';
 import 'package:get/get.dart';
 
 void main() {

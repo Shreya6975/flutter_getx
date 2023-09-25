@@ -1,27 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx/student.dart';
+import 'package:flutter_getx/controller/controller.dart';
 import 'package:get/get.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  // var student = Student();
+class MyApp extends GetView<Controller> {
+  const MyApp({super.key});
 
-  final student = Student(
-    name: "Shreya Panchal",
-    age: 24,
-  ).obs;
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    Get.put(Controller());
     return GetMaterialApp(
-      title: "State Management by using obx & custom class",
+      title: "Get-view",
       home: Scaffold(
         appBar: AppBar(
-          title: const Text("State Management by using obx & custom class"),
+          title: const Text("Get-view"),
         ),
         body: Center(
           child: Column(
@@ -30,7 +25,7 @@ class MyApp extends StatelessWidget {
             children: [
               Obx(
                     () => Text(
-                  "Name is ${student.value.name}",
+                  'The value is ${controller.count}',
                   style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -42,29 +37,24 @@ class MyApp extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  // student.name.value = student.name.value.toUpperCase();
-                  student.update((student) {
-                    student!.name = student.name.toString().toUpperCase();
-                  });
+                  debugPrint(controller.hashCode.toString());
+                  controller.increment();
                 },
                 child: const Text(
-                  "Uppercase Latter",
+                  "Increment Button",
                 ),
-              ),
-              const SizedBox(
+              ),  const SizedBox(
                 height: 10,
               ),
               ElevatedButton(
                 onPressed: () {
-                  // student.name.value = student.name.value.toLowerCase();
-                  student.update((student) {
-                    student!.name = student.name.toString().toLowerCase();
-                  });
+                  debugPrint(controller.hashCode.toString());
+                  controller.decrement();
                 },
                 child: const Text(
-                  "Lowercase Latter",
+                  "Decrement Button",
                 ),
-              )
+              ),
             ],
           ),
         ),

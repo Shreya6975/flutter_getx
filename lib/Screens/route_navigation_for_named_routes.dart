@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_getx/dashboard_page.dart';
+import 'package:flutter_getx/pages/dashboard_page.dart';
 import 'package:get/get.dart';
 
-import 'home_page.dart';
+import '../pages/home_page.dart';
 
 void main() {
   runApp(const MyApp());
